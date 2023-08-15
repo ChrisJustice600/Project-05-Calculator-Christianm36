@@ -32,7 +32,8 @@ buttons.forEach((button) => {
 plus.addEventListener("click", (e)=>{
     e.preventDefault();
     // inputText.value += e.target.textContent
-    calcul.textContent += inputText.value + e.target.textContent
+    calcul.textContent += inputText.value + " "+e.target.textContent+" ";
+
     inputText.value = "";
     // calcul.textContent = e.target.textContent
     console.log(calcul.textContent);
@@ -45,7 +46,7 @@ equal.addEventListener("click", (e)=> {
     calcul.textContent += inputText.value;
     console.log(eval(calcul.textContent));
     inputText.value = eval(calcul.textContent)
-    calcul.textContent += e.target.textContent
+    calcul.textContent +=" "+ e.target.textContent
     // result = calcul.textContent 
     // console.log(result);
     // e.target.textContent
