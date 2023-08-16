@@ -18,17 +18,47 @@ let result = "";
 buttons.forEach((button) => {
     // console.log(button)
     button.addEventListener("click", (e) => {
-       
-        inputText.value += e.target.textContent
-        console.log(inputText.value);
+        // inputText.value += e.target.textContent;
+        // console.log(inputText.value);
+        // inputText.value += e.target.textContent
+        // console.log(inputText.value);
         // console.log(calcul.textContent);
         // console.log(inputText.value);
         // result =  calcul.textContent
         // console.log(result);
         // calcul.textContent = 
-
+        // let hasTwo = false;
+        // let valeur = inputText.value
+        // console.log(valeur);
+        
+    
+    if (e.target.textContent === "." && inputText.value.includes(".")) {
+      return;
+    }
+    inputText.value += e.target.textContent;
+      console.log(inputText.value);
+    //   console.log(inputText.value.length)
+    if(inputText.value[0] === "0" && inputText.value[1] === "0"){
+        console.log("ok ok ")
+        inputText.value = inputText.value.slice(0, -1);
+    
+    // Sortir de la fonction pour empêcher toute autre action après avoir réinitialisé la valeur
+    return;
+    }
     })
+    // console.log(e.target);
+    // inputText.addEventListener("input", () => {
+        
+    // })
+  
+
 })
+
+
+
+
+
+
 plus.addEventListener("click", (e)=>{
     e.preventDefault();
     // inputText.value += e.target.textContent
