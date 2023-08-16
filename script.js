@@ -56,11 +56,16 @@ buttons.forEach((button) => {
 })
 
 
-
-
-
-
 plus.addEventListener("click", (e)=>{
+    e.preventDefault();
+    // inputText.value += e.target.textContent
+    calcul.textContent += inputText.value + " "+e.target.textContent+" ";
+
+    inputText.value = "";
+    // calcul.textContent = e.target.textContent
+    console.log(calcul.textContent);
+})
+moins.addEventListener("click", (e)=>{
     e.preventDefault();
     // inputText.value += e.target.textContent
     calcul.textContent += inputText.value + " "+e.target.textContent+" ";
