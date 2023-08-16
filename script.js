@@ -31,17 +31,18 @@ buttons.forEach((button) => {
         // let valeur = inputText.value
         // console.log(valeur);
         
-    
+    /////////-------------- Verifier le virgul decimal dans ma chaine---------------------///////
     if (e.target.textContent === "." && inputText.value.includes(".")) {
       return;
     }
     inputText.value += e.target.textContent;
       console.log(inputText.value);
     //   console.log(inputText.value.length)
+
+    //////////------------------ Gestion de zero au debut de l'Input------------//////////////
     if(inputText.value[0] === "0" && inputText.value[1] === "0"){
         console.log("ok ok ")
         inputText.value = inputText.value.slice(0, -1);
-    
     // Sortir de la fonction pour empêcher toute autre action après avoir réinitialisé la valeur
     return;
     }
