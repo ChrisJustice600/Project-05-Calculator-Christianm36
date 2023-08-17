@@ -10,6 +10,7 @@ const moins = document.getElementById("minus");
 const times = document.getElementById("times");
 const divideby = document.getElementById("divideby");
 const percentage = document.getElementById("percentage");
+const plusoumoins = document.getElementById("plusoumoins");
 // console.log(minus)
 const calcul = document.getElementById("calcul");
 
@@ -134,4 +135,24 @@ calcul.textContent += inputText.value;
     inputText.value = eval(calcul.textContent)
     inputText.value =  inputText.value/100
 
+})
+
+plusoumoins.addEventListener("click", (e)=>{
+    e.preventDefault();
+
+    console.log(inputText.value);
+    // if (e.target.textContent === "." && inputText.value.includes(".")) {
+    //     return;
+    //   }
+
+    if (inputText.value.indexOf("+") === -1) {
+        // if (inputText.value.includes("-")) {
+        //     return;
+        //   }
+        inputText.value = "-" + inputText.value
+    }else{
+        inputText.value = "" + inputText.value
+    }  
+
+   
 })
