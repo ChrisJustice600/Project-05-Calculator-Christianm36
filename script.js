@@ -6,7 +6,10 @@ const buttons = document.querySelectorAll(".numpad");
 const inputText = document.querySelector("input");
 const plus = document.getElementById("plus");
 const equal = document.getElementById("equals");
-const moins = document.getElementById("minus")
+const moins = document.getElementById("minus");
+const times = document.getElementById("times");
+const divideby = document.getElementById("divideby");
+const percentage = document.getElementById("percentage");
 // console.log(minus)
 const calcul = document.getElementById("calcul");
 
@@ -14,7 +17,8 @@ const calcul = document.getElementById("calcul");
 // console.log(buttons)
 inputText.value = "";
 calcul.textContent = " ";
-let result = "";
+let lastT;
+let caldel;
 buttons.forEach((button) => {
     // console.log(button)
     button.addEventListener("click", (e) => {
@@ -68,26 +72,66 @@ plus.addEventListener("click", (e)=>{
 moins.addEventListener("click", (e)=>{
     e.preventDefault();
     // inputText.value += e.target.textContent
-    calcul.textContent += inputText.value + " "+e.target.textContent+" ";
 
+    calcul.textContent += inputText.value + " "+e.target.textContent+" ";
+   
     inputText.value = "";
     // calcul.textContent = e.target.textContent
-    console.log(calcul.textContent);
+    // console.log(calcul.textContent);
 })
+times.addEventListener("click", (e)=>{
+    e.preventDefault();
+    // inputText.value += e.target.textContent
+//    let fois = "";
+//    fois = e.target.textContent
+//    console.log(typeof(e.target.textContent));
+// let texte = "×";
+
+let foisContent = e.target.textContent.replace(/×/g, "*");
+calcul.textContent += inputText.value + " "+foisContent+" ";
+   
+inputText.value = "";
+// calcul.textContent = e.target.textContent
+// console.log(calcul.textContent)
+})
+divideby.addEventListener("click", (e)=>{
+    e.preventDefault();
+    // inputText.value += e.target.textContent
+//    let fois = "";
+//    fois = e.target.textContent
+//    console.log(typeof(e.target.textContent));
+// let texte = "×";
+
+let foisContent = e.target.textContent.replace(/÷/g, "/");
+calcul.textContent += inputText.value + " "+foisContent+" ";
+   
+inputText.value = "";
+// calcul.textContent = e.target.textContent
+// console.log(calcul.textContent)
+})
+
 
 equal.addEventListener("click", (e)=> {
     e.preventDefault();
-    console.log(inputText.value)
-    console.log(calcul.textContent + inputText.value)
+    // console.log(inputText.value)
+    // console.log(calcul.textContent + inputText.value)
     calcul.textContent += inputText.value;
-    console.log(eval(calcul.textContent));
+    console.log(calcul.textContent);
     inputText.value = eval(calcul.textContent)
+    
     calcul.textContent +=" "+ e.target.textContent
-    // result = calcul.textContent 
-    // console.log(result);
-    // e.target.textContent
-    // calcul.textContent += calculate(inputText.value)
-    // inputText.value = eval(calcul.textContent)
-    // console.log(calcul.textContent)
-    // result =  calcul.textContent
+    console.log(calcul.textContent);
+    console.log(inputText.value);
+})
+percentage.addEventListener("click", (e)=>{
+    e.preventDefault();
+  
+let foisContent = e.target.textContent.replace(/÷/g, "/");
+console.log(inputText.value);
+
+calcul.textContent += inputText.value;
+    console.log(calcul.textContent);
+    inputText.value = eval(calcul.textContent)
+    inputText.value =  inputText.value/100
+
 })
