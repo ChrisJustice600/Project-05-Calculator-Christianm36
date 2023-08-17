@@ -14,8 +14,19 @@ const plusoumoins = document.getElementById("plusoumoins");
 // console.log(minus)
 const calcul = document.getElementById("calcul");
 const reset = document.getElementById("reset")
+const clear = document.getElementById("clear")
 
 
+clear.addEventListener("click", (e)=>{
+    e.preventDefault();
+
+ 
+    const valeurActuelle = inputText.value;
+    const nouvelleValeur = valeurActuelle.slice(0, -1); // Retirer le dernier caractère
+
+    inputText.value = nouvelleValeur;
+
+})
 reset.addEventListener("click", (e)=>{
     e.preventDefault();
 
