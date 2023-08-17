@@ -13,6 +13,21 @@ const percentage = document.getElementById("percentage");
 const plusoumoins = document.getElementById("plusoumoins");
 // console.log(minus)
 const calcul = document.getElementById("calcul");
+const reset = document.getElementById("reset")
+
+
+reset.addEventListener("click", (e)=>{
+    e.preventDefault();
+
+    calcul.textContent = "";
+
+    inputText.value = "";
+
+})
+
+inputText.addEventListener("keydown", (event) => {
+  event.preventDefault();
+});
 
 // console.log(inputText.value)
 // console.log(buttons)
