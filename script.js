@@ -44,8 +44,7 @@ inputText.addEventListener("keydown", (event) => {
 // console.log(buttons)
 inputText.value = "";
 calcul.textContent = " ";
-let lastT;
-let caldel;
+
 buttons.forEach((button) => {
     // console.log(button)
     button.addEventListener("click", (e) => {
@@ -58,6 +57,7 @@ buttons.forEach((button) => {
       console.log(inputText.value);
     //   console.log(inputText.value.length)
 
+
     //////////------------------ Gestion de zero au debut de l'Input------------//////////////
     if(inputText.value[0] === "0" && inputText.value[1] === "0"){
         console.log("ok ok ")
@@ -69,53 +69,69 @@ buttons.forEach((button) => {
 
 })
 
-
+let forCal = "";
 plus.addEventListener("click", (e)=>{
     e.preventDefault();
     // inputText.value += e.target.textContent
-    calcul.textContent += inputText.value + " "+e.target.textContent+" ";
+    if(forCal.includes("=")) {
+        calcul.textContent = "";
+        calcul.textContent = inputText.value + " "+e.target.textContent+" ";
+        inputText.value = "";
+    }else {
+        calcul.textContent += inputText.value + " "+e.target.textContent+" ";
 
     inputText.value = "";
 
     console.log(calcul.textContent);
+    }
 })
 moins.addEventListener("click", (e)=>{
     e.preventDefault();
     // inputText.value += e.target.textContent
+    if(forCal.includes("=")) {
+        calcul.textContent = "";
+        calcul.textContent = inputText.value + " "+e.target.textContent+" ";
+        inputText.value = "";
+    }else {
+        calcul.textContent += inputText.value + " "+e.target.textContent+" ";
 
-    calcul.textContent += inputText.value + " "+e.target.textContent+" ";
-   
     inputText.value = "";
-    // calcul.textContent = e.target.textContent
+
+    console.log(calcul.textContent);
+    }.target.textContent
     // console.log(calcul.textContent);
 })
 times.addEventListener("click", (e)=>{
     e.preventDefault();
     // inputText.value += e.target.textContent
-//    let fois = "";
-//    fois = e.target.textContent
-//    console.log(typeof(e.target.textContent));
-// let texte = "×";
+    if(forCal.includes("=")) {
+        calcul.textContent = "";
+        calcul.textContent = inputText.value + " "+e.target.textContent+" ";
+        inputText.value = "";
+    }else {
+        calcul.textContent += inputText.value + " "+e.target.textContent+" ";
 
-let foisContent = e.target.textContent.replace(/×/g, "*");
-calcul.textContent += inputText.value + " "+foisContent+" ";
-   
-inputText.value = "";
+    inputText.value = "";
+
+    console.log(calcul.textContent);
+    }
 // calcul.textContent = e.target.textContent
 // console.log(calcul.textContent)
 })
 divideby.addEventListener("click", (e)=>{
     e.preventDefault();
     // inputText.value += e.target.textContent
-//    let fois = "";
-//    fois = e.target.textContent
-//    console.log(typeof(e.target.textContent));
-// let texte = "×";
+    if(forCal.includes("=")) {
+        calcul.textContent = "";
+        calcul.textContent = inputText.value + " "+e.target.textContent+" ";
+        inputText.value = "";
+    }else {
+        calcul.textContent += inputText.value + " "+e.target.textContent+" ";
 
-let foisContent = e.target.textContent.replace(/÷/g, "/");
-calcul.textContent += inputText.value + " "+foisContent+" ";
-   
-inputText.value = "";
+    inputText.value = "";
+
+    console.log(calcul.textContent);
+    }
 // calcul.textContent = e.target.textContent
 // console.log(calcul.textContent)
 })
@@ -123,14 +139,20 @@ inputText.value = "";
 
 equal.addEventListener("click", (e)=> {
     e.preventDefault();
+    let res = "";
+    
     // console.log(inputText.value)
     // console.log(calcul.textContent + inputText.value)
     calcul.textContent += inputText.value;
+
     console.log(calcul.textContent);
     inputText.value = eval(calcul.textContent)
-    
+    res =  inputText.value;
+    // console.log(res)
     calcul.textContent +=" "+ e.target.textContent
+    forCal = calcul.textContent; 
     console.log(calcul.textContent);
+
     console.log(inputText.value);
 })
 percentage.addEventListener("click", (e)=>{
