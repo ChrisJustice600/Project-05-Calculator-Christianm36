@@ -1,4 +1,4 @@
-import { calculate } from "./calculator.js";
+
 
 // TODO: Faire la manipulation du DOM dans ce fichier
 // console.log("hello")
@@ -98,8 +98,7 @@ moins.addEventListener("click", (e)=>{
     inputText.value = "";
 
     console.log(calcul.textContent);
-    }.target.textContent
-    // console.log(calcul.textContent);
+    }
 })
 times.addEventListener("click", (e)=>{
     e.preventDefault();
