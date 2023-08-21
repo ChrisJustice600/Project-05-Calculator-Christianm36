@@ -48,6 +48,16 @@ calcul.textContent = " ";
 buttons.forEach((button) => {
     // console.log(button)
     button.addEventListener("click", (e) => {
+        const valeur = inputText.value;
+  
+    if (valeur.length > 10) {
+      // Tronquer ou supprimer les caractères supplémentaires
+      inputText.value = valeur.slice(0, 10);
+      
+      console.log("La saisie est limitée à 10 caractères !");
+      
+      // Vous pouvez effectuer d'autres actions ici si nécessaire
+    }
         
     /////////-------------- Verifier le virgul decimal dans ma chaine---------------------///////
     if (e.target.textContent === "." && inputText.value.includes(".")) {
