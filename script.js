@@ -113,6 +113,7 @@ moins.addEventListener("click", (e)=>{
     // calcul.textContent = e.target.textContent
     // console.log(calcul.textContent);
 })
+
 times.addEventListener("click", (e)=>{
     e.preventDefault();
     if (calcul.textContent.includes("*")) {
@@ -131,22 +132,13 @@ times.addEventListener("click", (e)=>{
     console.log(calcul.textContent);
     }
 
-    
-
-
-// calcul.textContent = e.target.textContent
-// console.log(calcul.textContent)
 })
 divideby.addEventListener("click", (e)=>{
     e.preventDefault();
     if (calcul.textContent.includes("/")) {
         return;
       }
-    // inputText.value += e.target.textContent
-//    let fois = "";
-//    fois = e.target.textContent
-//    console.log(typeof(e.target.textContent));
-// let texte = "×";
+
 if(forCal.includes("=")) {
     calcul.textContent = "";
     let foisContent = e.target.textContent.replace(/÷/g, "/");
