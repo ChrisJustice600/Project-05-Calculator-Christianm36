@@ -73,6 +73,9 @@ let forCal = "";
 plus.addEventListener("click", (e)=>{
     e.preventDefault();
     // inputText.value += e.target.textContent
+    if (calcul.textContent.includes("+")) {
+        return;
+      }
     if(forCal.includes("=")) {
         calcul.textContent = "";
         calcul.textContent = inputText.value + " "+e.target.textContent+" ";
@@ -85,10 +88,14 @@ plus.addEventListener("click", (e)=>{
     console.log(calcul.textContent);
     }
     
+    
 })
 moins.addEventListener("click", (e)=>{
     e.preventDefault();
     // inputText.value += e.target.textContent
+    if (calcul.textContent.includes("-")) {
+        return;
+      }
 
     calcul.textContent += inputText.value + " "+e.target.textContent+" ";
    
@@ -98,6 +105,9 @@ moins.addEventListener("click", (e)=>{
 })
 times.addEventListener("click", (e)=>{
     e.preventDefault();
+    if (calcul.textContent.includes("*")) {
+        return;
+      }
     if(forCal.includes("=")) {
         calcul.textContent = "";
         let foisContent = e.target.textContent.replace(/×/g, "*");
@@ -119,6 +129,9 @@ times.addEventListener("click", (e)=>{
 })
 divideby.addEventListener("click", (e)=>{
     e.preventDefault();
+    if (calcul.textContent.includes("/")) {
+        return;
+      }
     // inputText.value += e.target.textContent
 //    let fois = "";
 //    fois = e.target.textContent
@@ -137,7 +150,8 @@ if(forCal.includes("=")) {
 console.log(calcul.textContent);
 }
 // calcul.textContent = e.target.textContent
-// console.log(calcul.textContent)git 
+// console.log(calcul.textContent)
+
 })
 
 
