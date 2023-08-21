@@ -84,55 +84,60 @@ plus.addEventListener("click", (e)=>{
 
     console.log(calcul.textContent);
     }
+    
 })
 moins.addEventListener("click", (e)=>{
     e.preventDefault();
     // inputText.value += e.target.textContent
-    if(forCal.includes("=")) {
-        calcul.textContent = "";
-        calcul.textContent = inputText.value + " "+e.target.textContent+" ";
-        inputText.value = "";
-    }else {
-        calcul.textContent += inputText.value + " "+e.target.textContent+" ";
 
+    calcul.textContent += inputText.value + " "+e.target.textContent+" ";
+   
     inputText.value = "";
-
-    console.log(calcul.textContent);
-    }
+    // calcul.textContent = e.target.textContent
+    // console.log(calcul.textContent);
 })
 times.addEventListener("click", (e)=>{
     e.preventDefault();
-    // inputText.value += e.target.textContent
     if(forCal.includes("=")) {
         calcul.textContent = "";
-        calcul.textContent = inputText.value + " "+e.target.textContent+" ";
+        let foisContent = e.target.textContent.replace(/×/g, "*");
+        calcul.textContent = inputText.value + " "+foisContent+" ";
         inputText.value = "";
     }else {
-        calcul.textContent += inputText.value + " "+e.target.textContent+" ";
-
-    inputText.value = "";
+        let foisContent = e.target.textContent.replace(/×/g, "*");
+        calcul.textContent += inputText.value + " "+foisContent+" ";
+        inputText.value = "";
 
     console.log(calcul.textContent);
     }
+
+    
+
+
 // calcul.textContent = e.target.textContent
 // console.log(calcul.textContent)
 })
 divideby.addEventListener("click", (e)=>{
     e.preventDefault();
     // inputText.value += e.target.textContent
-    if(forCal.includes("=")) {
-        calcul.textContent = "";
-        calcul.textContent = inputText.value + " "+e.target.textContent+" ";
-        inputText.value = "";
-    }else {
-        calcul.textContent += inputText.value + " "+e.target.textContent+" ";
-
+//    let fois = "";
+//    fois = e.target.textContent
+//    console.log(typeof(e.target.textContent));
+// let texte = "×";
+if(forCal.includes("=")) {
+    calcul.textContent = "";
+    let foisContent = e.target.textContent.replace(/÷/g, "/");
+    calcul.textContent = inputText.value + " "+foisContent+" ";
+    inputText.value = "";
+}else {
+    let foisContent = e.target.textContent.replace(/÷/g, "/");
+    calcul.textContent += inputText.value + " "+foisContent+" ";
     inputText.value = "";
 
-    console.log(calcul.textContent);
-    }
+console.log(calcul.textContent);
+}
 // calcul.textContent = e.target.textContent
-// console.log(calcul.textContent)
+// console.log(calcul.textContent)git 
 })
 
 
