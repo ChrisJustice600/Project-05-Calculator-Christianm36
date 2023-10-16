@@ -76,21 +76,21 @@ function handleSubmitClick(operator){
 function operatorCalcul(textContent){
   
     if(userInput.value){
-        if(!currentResult){
-          console.log(textContent);
-            currentCalcul.textContent = `${userInput.value} ${textContent}`;
-            label.textContent = currentCalcul.textContent;
-            console.log(label.textContent);
-
-        }
-        
+      if(!currentResult){
+        console.log(textContent);
+        currentCalcul.textContent = `${userInput.value} ${textContent}`;
+        label.textContent = currentCalcul.textContent;
+        console.log(label.textContent);
+      }else {
+        currentCalcul.textContent = `${currentResult} ${textContent}`;
+        label.textContent = currentCalcul.textContent;
+      }
     userInput.value = "";
     }else{
       currentCalcul.textContent = `${0} ${textContent}`;
       label.textContent = currentCalcul.textContent;
       console.log(label.textContent);
     }
-    
 }
 
 
