@@ -46,31 +46,44 @@ function handleButtonClick(textContent, userInput){
     userInput.value = `${userInput.value}${textContent}`
     console.log(label.textContent);
 }
-function handleSubmitClick(textContent){
-    if(textContent === "="){
-        if(userInput.value){
-            
+
+function resultOperator(){
+  label.textContent = `${label.textContent} ${userInput.value}`
+
+  // console.log(label.textContent);
+  currentCalcul.textContent = `${label.textContent}`
+  currentResult = calculate(label.textContent)
+
+   return currentResult
+}
+function handleSubmitClick(operator){
+  if(operator === "="){
+    if(userInput.value){
+
            label.textContent = `${label.textContent} ${userInput.value}`
+
            console.log(label.textContent);
-           currentCalcul.textContent = `${label.textContent} ${textContent}`
-            userInput.value = calculate(label.textContent)
-            // console.log(userInput.value);
+           currentCalcul.textContent = `${label.textContent} ${operator}`
+           userInput.value = calculate(label.textContent)
+           // console.log(userInput.value);
             currentResult = userInput.value
-        }
+          }
     }else{
-        operatorCalcul(textContent, label, userInput);
+      operatorCalcul(operator);
     }
 }
 
-function operatorCalcul(textContent, label, userInput){
+function operatorCalcul(textContent){
+  
     if(userInput.value){
         if(!currentResult){
           console.log(textContent);
             currentCalcul.textContent = `${userInput.value} ${textContent}`;
             label.textContent = currentCalcul.textContent;
             console.log(label.textContent);
+
         }
-    // console.log(textContent);
+        
     userInput.value = "";
     }else{
       currentCalcul.textContent = `${0} ${textContent}`;
@@ -79,7 +92,6 @@ function operatorCalcul(textContent, label, userInput){
     }
     
 }
-
 
 
 form.addEventListener("submit", function(event) {
