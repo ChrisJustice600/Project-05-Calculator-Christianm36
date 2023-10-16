@@ -45,7 +45,6 @@ buttons.forEach(function(button) {
 function handleButtonClick(textContent, userInput){
     userInput.value = `${userInput.value}${textContent}`
     console.log(label.textContent);
-    
 }
 function handleSubmitClick(textContent){
     if(textContent === "="){
@@ -55,7 +54,7 @@ function handleSubmitClick(textContent){
            console.log(label.textContent);
            currentCalcul.textContent = `${label.textContent} ${textContent}`
             userInput.value = calculate(label.textContent)
-            console.log(userInput.value);
+            // console.log(userInput.value);
             currentResult = userInput.value
         }
     }else{
@@ -73,7 +72,12 @@ function operatorCalcul(textContent, label, userInput){
         }
     // console.log(textContent);
     userInput.value = "";
+    }else{
+      currentCalcul.textContent = `${0} ${textContent}`;
+      label.textContent = currentCalcul.textContent;
+      console.log(label.textContent);
     }
+    
 }
 
 
