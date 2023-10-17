@@ -3,7 +3,6 @@ const buttons = form.querySelectorAll("button");
 const label = document.querySelector("#input");
 const userInput = form.elements["userInput"];
 const currentCalcul = document.getElementById("calcul");
-console.log(currentCalcul);
 
 
 // INITIALISATION 
@@ -27,7 +26,6 @@ buttons.forEach(function(button) {
     button.addEventListener("click", function() {
       switch (this.type) {
         case "submit":
-            console.log(this.textContent);
           handleSubmitClick(this.textContent);
           break;
         case "reset":
@@ -48,13 +46,13 @@ function handleButtonClick(textContent, userInput){
 }
 
 function resultOperator(){
-  label.textContent = `${label.textContent} ${userInput.value}`
+  if(userInput.value && currentCalcul.textContent){
+    label.textContent = `${currentCalcul.textContent} ${userInput.value}`
 
-  // console.log(label.textContent);
-  currentCalcul.textContent = `${label.textContent}`
-  currentResult = calculate(label.textContent)
-
-   return currentResult
+// console.log(label.textContent);
+    currentResult = calculate(label.textContent)
+    console.log(currentResult);
+  }
 }
 function handleSubmitClick(operator){
   if(operator === "="){
@@ -74,6 +72,8 @@ function handleSubmitClick(operator){
 }
 
 function operatorCalcul(textContent){
+
+  resultOperator()
   
     if(userInput.value){
       if(!currentResult){
@@ -91,6 +91,8 @@ function operatorCalcul(textContent){
       label.textContent = currentCalcul.textContent;
       console.log(label.textContent);
     }
+
+    
 }
 
 
