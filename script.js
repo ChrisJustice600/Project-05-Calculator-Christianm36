@@ -7,7 +7,7 @@ const currentCalcul = document.getElementById("calcul");
 
 // INITIALISATION 
 label.textContent = "";
-userInput.value = "";
+userInput.value = "0";
 let currentResult = "";
 
 function cleanExpression(expression) {
@@ -42,16 +42,19 @@ buttons.forEach(function(button) {
   });
 
 function handleButtonClick(textContent, userInput){
+  if (userInput.value === "0") {
+    userInput.value = "";
+  }
 
-    /////////-------------- Verifier le virgul decimal dans ma chaine---------------------///////
+    /////////---------- Verifier le virgul decimal dans ma chaine-------------///////
   if(textContent === "." && userInput.value.includes(".")){
     return
   }  
 
-      //////////------------------ Gestion de zero au debut de l'Input------------//////////////
+  //////////--------------Gestion de zero au debut de l'Input---------//////////////
   if(userInput.value[0] === "0" && userInput.value[1] === "0"){
     userInput.value = userInput.value.slice(0, -1);
-// Sortir de la fonction pour empêcher toute autre action après avoir réinitialisé la valeur
+//Sortir de la fonction pour empêcher toute autre action après avoir réinitialisé la valeur
     return;
 }
   userInput.value = `${userInput.value}${textContent}`
@@ -82,7 +85,41 @@ function resultOperator(textContent){
       currentResult = calculate(label.textContent)
       console.log(currentResult);
     }
+  }
 }
+function findSign() {
+  // Liste des signes à rechercher
+  const signes = ["+", "-", "×", "÷"];
+  // Recherche du premier signe dans la chaîne
+  for (const signe of signes) {
+    if (currentCalcul.textContent.indexOf(signe) !== -1) {
+      return signe;
+    }
+  }
+  // Si aucun signe n'est trouvé, on renvoie None
+  return null;
+}
+
+function EqualOperationContinue(){
+  if(currentCalcul.textContent.includes("=")){
+    let si = currentCalcul.textContent.replace(/\s/g, "")
+    let sign = ""
+    console.log(si);
+
+    sign = findSign();
+    console.log(sign);
+    
+    const test = si.split(sign);
+    let firstNumber = test[0];
+    let secondNumber = test[1].slice(0, -1);
+    userInput.value = calculate(label.textContent)
+    console.log(userInput.value);
+    firstNumber = userInput.value
+    console.log(firstNumber);
+    console.log(secondNumber);
+
+
+  }
 }
 
 function handleSubmitClick(operator){
@@ -103,6 +140,8 @@ function handleSubmitClick(operator){
     }else{
       operatorCalcul(operator);
     }
+    EqualOperationContinue()
+
 }
 
 function operatorCalcul(textContent){
