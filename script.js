@@ -17,6 +17,7 @@ function cleanExpression(expression) {
   }
   
   function calculate(expression) {
+    console.log(expression);
       return eval(cleanExpression(expression));
   }
 
@@ -45,15 +46,26 @@ function handleButtonClick(textContent, userInput){
     console.log(label.textContent);
 }
 
-function resultOperator(){
-  if(userInput.value && currentCalcul.textContent){
-    label.textContent = `${currentCalcul.textContent} ${userInput.value}`
 
-// console.log(label.textContent);
-    currentResult = calculate(label.textContent)
-    console.log(currentResult);
-  }
+function resultOperator(textContent){
+  if(userInput.value){
+    if(currentCalcul.textContent.includes("=")){
+      console.log(currentResult);
+      currentCalcul.textContent = `${currentResult} ${textContent}`;
+      label.textContent = currentCalcul.textContent;
+      console.log(label.textContent);
+    }else{
+      console.log(currentCalcul.textContent);
+      console.log(userInput.value);
+      label.textContent = `${currentCalcul.textContent} ${userInput.value}`
+      console.log(label.textContent);
+  // console.log(label.textContent);
+      currentResult = calculate(label.textContent)
+      console.log(currentResult);
+    }
 }
+}
+
 function handleSubmitClick(operator){
   if(operator === "="){
     if(userInput.value){
@@ -63,8 +75,11 @@ function handleSubmitClick(operator){
            console.log(label.textContent);
            currentCalcul.textContent = `${label.textContent} ${operator}`
            userInput.value = calculate(label.textContent)
+           console.log(userInput.value);
            // console.log(userInput.value);
             currentResult = userInput.value
+            console.log(currentResult);
+
           }
     }else{
       operatorCalcul(operator);
@@ -73,7 +88,7 @@ function handleSubmitClick(operator){
 
 function operatorCalcul(textContent){
 
-  resultOperator()
+  resultOperator();
   
     if(userInput.value){
       if(!currentResult){
@@ -81,9 +96,11 @@ function operatorCalcul(textContent){
         currentCalcul.textContent = `${userInput.value} ${textContent}`;
         label.textContent = currentCalcul.textContent;
         console.log(label.textContent);
-      }else {
+      } else{
+        console.log(currentResult);
         currentCalcul.textContent = `${currentResult} ${textContent}`;
         label.textContent = currentCalcul.textContent;
+        console.log(label.textContent);
       }
     userInput.value = "";
     }else{
