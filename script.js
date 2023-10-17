@@ -42,9 +42,28 @@ buttons.forEach(function(button) {
   });
 
 function handleButtonClick(textContent, userInput){
-    userInput.value = `${userInput.value}${textContent}`
-    console.log(label.textContent);
+
+    /////////-------------- Verifier le virgul decimal dans ma chaine---------------------///////
+  if(textContent === "." && userInput.value.includes(".")){
+    return
+  }  
+
+      //////////------------------ Gestion de zero au debut de l'Input------------//////////////
+  if(userInput.value[0] === "0" && userInput.value[1] === "0"){
+    userInput.value = userInput.value.slice(0, -1);
+// Sortir de la fonction pour empêcher toute autre action après avoir réinitialisé la valeur
+    return;
 }
+  userInput.value = `${userInput.value}${textContent}`
+  console.log(label.textContent);
+}
+
+
+// function handleDecimalPoint(textContent){
+//   if(textContent === "." && userInput.value.includes(".")){
+//     return
+//   }
+// }
 
 
 function resultOperator(textContent){
